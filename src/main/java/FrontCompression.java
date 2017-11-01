@@ -44,8 +44,16 @@ public class FrontCompression {
         /*
          * Complete this function.
          */
+        String[] list = corpus.split("\n");
+        String prefix = "";
+        int numChar = 0;
+        for (int i = 0; i < list.length - 1; i++) {
+            numChar = longestPrefix(list[i], list[i + 1]);
+            String temp = list[i];
+            prefix = numChar + " " + temp.substring(0, numChar) + "\n";
+        }
 
-        return "";
+        return prefix;
     }
 
     /**
@@ -82,8 +90,18 @@ public class FrontCompression {
         /*
          * Complete this function.
          */
-        return 0;
-    }
+        String smallest = firstString.length() > secondString.length() ? secondString : firstString;
+        int prefix = 0;
+        for (int i = 0; i < smallest.length(); i++) {
+            if (firstString.charAt(i) == secondString.charAt(i)) {
+                prefix++;
+            } else {
+                break;
+            }
+            }
+        return prefix;
+        }
+
 
     /**
      * Test your compression and decompression algorithm.
